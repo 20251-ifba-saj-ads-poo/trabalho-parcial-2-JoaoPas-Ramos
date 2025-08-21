@@ -1,39 +1,56 @@
-/**
- * Sample Skeleton for 'Login.fxml' Controller Class
- */
-
 package br.edu.ifba.saj.fwads.controller;
 
-import br.edu.ifba.saj.fwads.App;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public class LoginController {
 
-    @FXML // fx:id="txSenha"
-    private PasswordField txSenha; // Value injected by FXMLLoader
-
-    @FXML // fx:id="txUsuario"
-    private TextField txUsuario; // Value injected by FXMLLoader
+    @FXML private TextField txtEmail;
+    @FXML private PasswordField txtSenha;
 
     @FXML
-    void entrar(ActionEvent event) {
-        if(txUsuario.getText().equals("admin") && txSenha.getText().equals("admin")){
-            new Alert(AlertType.INFORMATION, "Usuário e senha corretos").showAndWait();
-            App.setRoot("controller/Master.fxml");
-        }else{
-            new Alert(AlertType.ERROR, "Usuário ou senha inválidos").show();
+    private void onLoginClick() {
+        String email = txtEmail.getText();
+        String senha = txtSenha.getText();
+
+        if ("carlos@uni.com".equals(email) && "123".equals(senha)) {
+            trocarParaMainView();
+        } else {
+            Alert alert = new Alert(AlertType.ERROR, "Credenciais inválidas!");
+            alert.showAndWait();
         }
     }
 
     @FXML
-    void limparCampos(ActionEvent event) {
-        txUsuario.setText("");
-        txSenha.setText("");
+    private void onRegisterClick() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/Register.fxml"));
+            Scene scene = new Scene(loader.load());
+            Stage stage = (Stage) txtEmail.getScene().getWindow();
+            stage.setScene(scene);
+            stage.setTitle("Cadastro");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
+    private void trocarParaMainView() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/MainView.fxml"));
+            Scene scene = new Scene(loader.load());
+            Stage stage = (Stage) txtEmail.getScene().getWindow();
+            stage.setScene(scene);
+            stage.setTitle("Sistema de Reservas");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
