@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx"
+<BorderPane xmlns="http://javafx.com/javafx/24"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="package br.edu.ifba.saj.fwads.controller.CadastroController";
+            fx:controller="br.edu.ifba.saj.fwads.controller.CadastroController"
             prefWidth="600.0" prefHeight="420.0">
 
     <top>
@@ -13,13 +14,10 @@
             <children>
                 <Button fx:id="btnVoltar" text="⟵ Voltar" onAction="#onVoltarClick"/>
             </children>
-            <padding>
-                <Insets top="12" right="12" bottom="12" left="12"/>
-            </padding>
+            <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
         </HBox>
     </top>
 
- 
     <center>
         <VBox alignment="CENTER" spacing="14.0">
             <children>
@@ -30,36 +28,20 @@
                         <ColumnConstraints halignment="RIGHT" minWidth="120"/>
                         <ColumnConstraints halignment="LEFT" minWidth="240" hgrow="ALWAYS"/>
                     </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="28"/>
-                        <RowConstraints minHeight="28"/>
-                        <RowConstraints minHeight="28"/>
-                        <RowConstraints minHeight="28"/>
-                    </rowConstraints>
-
-                 
                     <children>
                         <Label text="E-mail:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-                        <TextField fx:id="txtEmail" promptText="nome@exemplo.com"
-                                   GridPane.rowIndex="0" GridPane.columnIndex="1" />
+                        <TextField fx:id="txtEmail" promptText="nome@exemplo.com" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
 
-                       
                         <Label text="Nome completo:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-                        <TextField fx:id="txtNome" promptText="Seu nome"
-                                   GridPane.rowIndex="1" GridPane.columnIndex="1" />
+                        <TextField fx:id="txtNome" promptText="Seu nome" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
 
-                      
                         <Label text="Matrícula:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-                        <TextField fx:id="txtMatricula" promptText="Ex.: A123"
-                                   GridPane.rowIndex="2" GridPane.columnIndex="1" />
+                        <TextField fx:id="txtMatricula" promptText="Ex.: A123" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
 
-                       
                         <Label text="Senha:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-                        <PasswordField fx:id="txtSenha" promptText="Digite a senha"
-                                       GridPane.rowIndex="3" GridPane.columnIndex="1" />
+                        <PasswordField fx:id="txtSenha" promptText="Digite a senha" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
                     </children>
                 </GridPane>
-
 
                 <VBox spacing="6.0" alignment="CENTER">
                     <children>
@@ -73,9 +55,7 @@
                     </children>
                 </VBox>
             </children>
-            <padding>
-                <Insets top="10" right="30" bottom="10" left="30"/>
-            </padding>
+            <padding><Insets top="10" right="30" bottom="10" left="30"/></padding>
         </VBox>
     </center>
 
@@ -84,9 +64,8 @@
             <children>
                 <Button fx:id="btnEnviar" text="Enviar" onAction="#onEnviarClick"/>
             </children>
-            <padding>
-                <Insets top="12" right="12" bottom="12" left="12"/>
-            </padding>
+            <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
         </HBox>
     </bottom>
+
 </BorderPane>
