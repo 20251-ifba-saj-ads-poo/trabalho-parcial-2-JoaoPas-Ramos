@@ -14,6 +14,14 @@ public class Sala {
         this.tipo = tipo;
         this.capacidade = capacidade;
         this.recursos = new ArrayList<>();
+        if (recursos != null) {
+            for (String r : recursos) {
+                if (r != null) {
+                    String t = r.trim();
+                    if (!t.isEmpty() && !this.recursos.contains(t)) this.recursos.add(t);
+                }
+            }
+        }
     }
 
     public String getNome() { return nome; }
@@ -39,5 +47,4 @@ public class Sala {
     public String toString() {
         return nome + " (" + tipo + ") - Capacidade: " + capacidade + " - Recursos: " + recursos;
     }
-    
 }

@@ -11,7 +11,10 @@ public class Aluno extends Usuario {
     public String getCurso() { return curso; }
 
     @Override
-    public String getTipoUsuario() {
-        return "Aluno";
+    public String getTipoUsuario() { return "Aluno"; }
+
+    @Override
+    public String toString() {
+        return super.toString() + " - Curso: " + curso;
     }
 }

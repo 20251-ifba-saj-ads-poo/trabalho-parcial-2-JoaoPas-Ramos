@@ -5,6 +5,7 @@ module br.edu.ifba.saj.fwads {
 
     opens br.edu.ifba.saj.fwads.controller to javafx.fxml;    
     opens br.edu.ifba.saj.fwads.model to javafx.base, javafx.fxml;   
+    opens views to javafx.fxml; 
     
     exports br.edu.ifba.saj.fwads;
     exports br.edu.ifba.saj.fwads.model;

@@ -7,6 +7,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import br.edu.ifba.saj.fwads.AppState;
+import br.edu.ifba.saj.fwads.model.Aluno;
+import br.edu.ifba.saj.fwads.model.Professor;
+import br.edu.ifba.saj.fwads.model.Usuario;
+
 public class CadastroController {
 
     @FXML private TextField txtEmail;
@@ -28,19 +33,23 @@ public class CadastroController {
     }
 
     @FXML
-    private void onVoltarClick() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/Login.fxml"));
-            Scene scene = new Scene(loader.load());
-            Stage stage = (Stage) btnVoltar.getScene().getWindow();
-            stage.setScene(scene);
-            stage.setTitle("Login");
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-            alertErro("Erro ao voltar para a tela de login.");
-        }
+private void onVoltarClick() {
+    try {
+        var url = java.util.Objects.requireNonNull(
+                getClass().getResource("/views/Login.fxml"),
+                "Login.fxml não encontrado em /views/"
+        );
+        FXMLLoader loader = new FXMLLoader(url);
+        Scene scene = new Scene(loader.load());
+        Stage stage = (Stage) btnVoltar.getScene().getWindow();
+        stage.setScene(scene);
+        stage.setTitle("Login");
+        stage.show();
+    } catch (Exception e) {
+        e.printStackTrace();
+        alertErro("Erro ao voltar para a tela de login: " + e.getMessage());
     }
+}
 
     @FXML
     private void onEnviarClick() {
@@ -61,14 +70,25 @@ public class CadastroController {
             return;
         }
 
-        String perfil = chkProfessor.isSelected() ? "Professor" : "Aluno";
+        boolean professor = chkProfessor.isSelected();
+
+        Usuario novo = professor
+                ? new Professor(nome, email, matricula, "Não informado")
+                : new Aluno(nome, email, matricula, "Não informado");
+
+        boolean ok = AppState.getUsuarioManager().cadastrarUsuario(novo, senha);
+        if (!ok) {
+            alertErro("Não foi possível cadastrar. E-mail já existente?");
+            return;
+        }
 
         alertInfo("Usuário cadastrado com sucesso!\n\n"
                 + "Nome: " + nome + "\n"
                 + "Email: " + email + "\n"
                 + "Matrícula: " + matricula + "\n"
-                + "Perfil: " + perfil);
+                + "Perfil: " + (professor ? "Professor" : "Aluno"));
 
+        onVoltarClick();
     }
 
     private void alertInfo(String msg) {

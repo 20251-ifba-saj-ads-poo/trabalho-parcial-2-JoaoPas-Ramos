@@ -1,39 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/24"
+<BorderPane xmlns="http://javafx.com/javafx/24" 
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="br.edu.ifba.saj.fwads.controller.MainController"
-            prefWidth="800.0" prefHeight="520.0">
-
+            fx:controller="br.edu.ifba.saj.fwads.controller.MainController">
     <top>
-        <BorderPane BorderPane.alignment="CENTER">
-            <center>
-                <Label text="salas" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
-            </center>
-            <right>
-                <Button fx:id="btnPerfil" text="Perfil" onAction="#onPerfilClick"
-                        style="-fx-padding: 6 14 6 14;"/>
-            </right>
-            <padding>
-                <Insets top="10" right="12" bottom="10" left="12"/>
-            </padding>
-        </BorderPane>
+        <ToolBar>
+            <Button fx:id="btnPerfil" text="Perfil" onAction="#onPerfilClick"/>
+            <Button fx:id="btnCadastrarSala" text="Cadastrar Sala" onAction="#onCadastrarSalaClick"/>
+        </ToolBar>
     </top>
 
     <center>
         <TableView fx:id="tableSalas">
             <columns>
-                <TableColumn fx:id="colNome" text="Nome" prefWidth="280.0"/>
-                <TableColumn fx:id="colTipo" text="Tipo" prefWidth="240.0"/>
-                <TableColumn fx:id="colCapacidade" text="Capacidade" prefWidth="160.0"/>
+                <TableColumn fx:id="colNome" text="Nome" prefWidth="200"/>
+                <TableColumn fx:id="colTipo" text="Tipo" prefWidth="150"/>
+                <TableColumn fx:id="colCapacidade" text="Capacidade" prefWidth="120"/>
             </columns>
         </TableView>
     </center>
 
     <padding>
-        <Insets top="12" right="12" bottom="12" left="12"/>
+        <Insets top="8" right="8" bottom="8" left="8"/>
     </padding>
 </BorderPane>

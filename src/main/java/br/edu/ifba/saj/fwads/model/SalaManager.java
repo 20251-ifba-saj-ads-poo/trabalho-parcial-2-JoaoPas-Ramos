@@ -6,8 +6,12 @@ import java.util.List;
 public class SalaManager {
     private List<Sala> salas = new ArrayList<>();
 
-    public void cadastrarSala(Sala sala) {
+    public boolean cadastrarSala(Sala sala) {
+        if (buscarSalaPorNome(sala.getNome()) != null) {
+            return false;
+        }
         salas.add(sala);
+        return true;
     }
 
     public List<Sala> listarSalas() {
